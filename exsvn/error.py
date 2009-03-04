@@ -1,3 +1,6 @@
 
-class ApplicationError(Exception):
+class ExsvnError(Exception):
+	pass
+
+class ApplicationError(ExsvnError):
 	pass
