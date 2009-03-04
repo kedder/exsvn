@@ -1,4 +1,7 @@
 tmp
+build
+dist
 tags
+*.egg-info
 *.swp
 *.py?
