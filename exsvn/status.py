@@ -1,5 +1,6 @@
 import pysvn
 
+from context import get_context
 from error import ApplicationError
 
 wc_status_kind_map = {
@@ -19,9 +20,9 @@ wc_status_kind_map = {
 	pysvn.wc_status_kind.unversioned: '?',
 }
 
-def get_status(ctx, dir):
+def get_status(dir):
 	try:
-		full_status = ctx.client.status(dir)
+		full_status = get_context().client.status(dir)
 	except pysvn.ClientError, e:
 		raise ApplicationError(e)
 
@@ -34,4 +35,7 @@ def get_status(ctx, dir):
 
 def print_status(status):
 	for item in status:
-		print "  ",wc_status_kind_map[item.text_status], item.path
+		print "  ", format_icon(item), item.path
+
+def format_icon(item):
+    return wc_status_kind_map[item.text_status]
