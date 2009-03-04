@@ -39,8 +39,9 @@ class ExSvn(Cmd):
 
 	do_st = do_status
 
-
-
-if __name__ == '__main__':
+def main():
 	prog = ExSvn()
 	prog.run()
+
+if __name__ == '__main__':
+	main()
