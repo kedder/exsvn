@@ -25,7 +25,9 @@ def get_status(ctx, dir):
 	except pysvn.ClientError, e:
 		raise ApplicationError(e)
 
-	ignore = [pysvn.wc_status_kind.none, pysvn.wc_status_kind.normal]
+	ignore = [pysvn.wc_status_kind.none,
+           pysvn.wc_status_kind.normal,
+           pysvn.wc_status_kind.ignored]
 	status = (s for s in full_status if s.text_status not in ignore)
 	return status
 	
