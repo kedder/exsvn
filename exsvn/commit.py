@@ -1,11 +1,15 @@
-SEPARATOR_BEGIN = "----- BEGIN %s -----"
-SEPARATOR_END = "----- END %s -----"
-
+import os
 from StringIO import StringIO
+from tempfile import mktemp
 import pysvn
 
 from status import get_status, format_icon
 from error import ApplicationError
+
+SEPARATOR_BEGIN = "----- BEGIN %s -----"
+SEPARATOR_END = "----- END %s -----"
+
+EDITOR = "vim"
 
 def gen_commit_message(dir):
     """ Generate commit message prompt text
@@ -43,7 +47,20 @@ def _format_status_item(item):
     line = "[%s] %s   %s" % (check, format_icon(item), item.path)
     return line
 
-def prompt_commit():
+def prompt_commit(message):
     """ Present user with commit prompt
-    """
     
+    Return edited message
+    """
+    tmpfile = mktemp(prefix="commit", suffix=".exsvn")
+    f = file(tmpfile, "w")
+    f.write(message)
+    f.close()
+
+    cmd = "%s %s" % (EDITOR, tmpfile)
+    os.system(cmd)
+    
+    f = file(tmpfile)
+    edited = f.read()
+    f.close()
+    return edited

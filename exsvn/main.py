@@ -44,7 +44,8 @@ class ExSvn(Cmd):
         """Commit changes to central repository
         """
         msg = gen_commit_message(".")
-        print msg
+        edited = prompt_commit(msg)
+        print edited
 
     do_ci = do_commit
         
