@@ -2,17 +2,18 @@ ExSvn - extended subversion tools
 =================================
 
 This project is intended to automate some of the common tasks, related to
-source control, author is performing at his workplace. This project implements
-set of tools to make those task less boring / time consuming / error prone.
+source control, author is routinely performing at his workplace. This project
+implements set of tools to make those task less boring / time consuming / error
+prone.
 
 These tools are not intended for broad audience, since scope is rather specific
-to author environment, however one may find the codebase flexible enough to
-tweak ir for his own needs.
+to author environment. However, one may find the codebase flexible enough to
+tweak it for his own needs.
 
 Project scope and goals 
 =======================
 
-Here are list of problems this project this project is aimed to solve:
+Here are list of problems this project is aimed to solve:
 
   1. Never-commit files.
   
